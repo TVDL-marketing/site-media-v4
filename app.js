@@ -74,9 +74,30 @@
         renderSidebar();
         renderContent();
         pushUrl();
+        guideToSidebar(state.brand);
         document.querySelector(`[data-brand-trigger="${state.brand}"]`)?.focus();
       });
     });
+  }
+
+
+  function guideToSidebar(brand) {
+    const trigger = document.querySelector(`[data-brand-trigger="${brand}"]`);
+    if (!trigger) return;
+
+    brandNav.classList.remove("guide-focus");
+    trigger.classList.remove("guide-pulse");
+
+    void brandNav.offsetWidth;
+    brandNav.classList.add("guide-focus");
+    trigger.classList.add("guide-pulse");
+
+    trigger.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    window.setTimeout(() => {
+      brandNav.classList.remove("guide-focus");
+      trigger.classList.remove("guide-pulse");
+    }, 1400);
   }
 
   function renderSidebar() {

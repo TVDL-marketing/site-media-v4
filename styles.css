@@ -133,6 +133,45 @@ body {
   background: var(--accent);
 }
 
+
+.brand-nav.guide-focus {
+  animation: nav-guidance 0.9s ease;
+}
+
+.brand-btn.guide-pulse {
+  animation: brand-target 1.2s ease;
+}
+
+@keyframes nav-guidance {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(6px);
+  }
+  55% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes brand-target {
+  0% {
+    box-shadow: 0 0 0 0 rgba(206, 17, 45, 0);
+    background: transparent;
+  }
+  35% {
+    box-shadow: 0 0 0 6px rgba(206, 17, 45, 0.16);
+    background: rgba(206, 17, 45, 0.06);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(206, 17, 45, 0);
+    background: transparent;
+  }
+}
+
 .brand-categories {
   margin: 0;
   padding: 0 0 0 0.4rem;

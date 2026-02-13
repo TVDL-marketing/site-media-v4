@@ -26,21 +26,21 @@
   ];
 
   const BRAND_LOGOS = {
-    "Mini Freestyle": "assets/logos/2._0000_logo-Mini-freestyle.png",
-    Challenger: "assets/logos/2._0001_Logo-Challenger.png",
-    Sterckeman: "assets/logos/2._0002_Logo-Sterckeman.png",
-    Rubis: "assets/logos/2._0003_Logo-Rubis.png",
-    Chausson: "assets/logos/2._0004_Logo-Chausson.png",
-    Caravelair: "assets/logos/2._0005_Logo-Caravelair.png",
+    "Mini Freestyle": "2._0000_logo-Mini-freestyle.png",
+    Challenger: "2._0001_Logo-Challenger.png",
+    Sterckeman: "2._0002_Logo-Sterckeman.png",
+    Rubis: "2._0003_Logo-Rubis.png",
+    Chausson: "2._0004_Logo-Chausson.png",
+    Caravelair: "2._0005_Logo-Caravelair.png",
   };
 
   const BRAND_IMAGES = {
-    Sterckeman: "assets/logos/_0004_Sterckeman.jpg",
-    Caravelair: "assets/logos/_0005_Caravelair.jpg",
-    "Mini Freestyle": "assets/logos/_0000_Mini Freestyle.jpg",
-    Rubis: "assets/logos/_0001_Rubis.jpg",
-    Chausson: "assets/logos/_0002_Chausson.jpg",
-    Challenger: "assets/logos/_0003_Challenger.jpg",
+    Caravelair: "Caravelair.jpg",
+    Challenger: "Challenger.jpg",
+    Chausson: "Chausson.jpg",
+    "Mini Freestyle": "Mini Freestyle.jpg",
+    Rubis: "Rubis.jpg",
+    Sterckeman: "Sterckeman.jpg",
   };
 
   const CATEGORY_IMAGES = {

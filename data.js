@@ -43,24 +43,6 @@
     Challenger: "assets/logos/_0003_Challenger.jpg",
   };
 
-  const BRAND_LOGO_FALLBACKS = {
-    Chausson: "assets/logos/chausson.svg",
-    Challenger: "assets/logos/challenger.svg",
-    Caravelair: "assets/logos/caravelair.svg",
-    Sterckeman: "assets/logos/sterckeman.svg",
-    Rubis: "assets/logos/rubis.svg",
-    "Mini Freestyle": "assets/logos/mini-freestyle.svg",
-  };
-
-  const BRAND_IMAGE_FALLBACKS = {
-    Chausson: "https://images.unsplash.com/photo-1501706362039-c6e80948f5d6?auto=format&fit=crop&w=1600&q=80",
-    Challenger: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1600&q=80",
-    Caravelair: "https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=1600&q=80",
-    Sterckeman: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=1600&q=80",
-    Rubis: "https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1600&q=80",
-    "Mini Freestyle": "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1600&q=80",
-  };
-
   const CATEGORY_IMAGES = {
     "photos-hd": "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=80",
     "dossiers-presse": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=80",
@@ -133,12 +115,10 @@
     brands: BRANDS,
     brandImages: BRAND_IMAGES,
     brandLogos: BRAND_LOGOS,
-    brandImageFallbacks: BRAND_IMAGE_FALLBACKS,
-    brandLogoFallbacks: BRAND_LOGO_FALLBACKS,
     categoriesByBrand: CATEGORIES_BY_BRAND,
     mediaData: MEDIA_DATA,
   };
 })();
 
 // Notes architecture: données mock priorisent les assets déposés localement (logos + visuels marque),
-// avec fallbacks explicites pour préserver l'affichage si certains fichiers sont absents côté environnement.
+// sans fallback: les visuels proviennent exclusivement des fichiers PNG/JPG fournis pour les marques.

@@ -4,8 +4,6 @@
     years,
     brandImages,
     brandLogos,
-    brandImageFallbacks,
-    brandLogoFallbacks,
     categoriesByBrand,
     mediaData,
   } = window.MediaCenterData;
@@ -60,10 +58,10 @@
         const isActive = state.brand === brand;
         return `
           <button class="brand-card ${isActive ? "active" : ""}" role="listitem" data-brand="${brand}" aria-label="Ouvrir ${brand} dans le menu latéral">
-            <div class="brand-card-media" data-brand-media="${brand}" style="background-image:url('${brandImages[brand]}')"></div>
+            <div class="brand-card-media" style="background-image:url('${brandImages[brand]}')"></div>
             <div class="brand-card-content">
               <div class="brand-logo-wrap" aria-hidden="true">
-                <img class="brand-logo" data-brand-logo="${brand}" src="${brandLogos[brand]}" alt="" loading="lazy" />
+                <img class="brand-logo" src="${brandLogos[brand]}" alt="" loading="lazy" />
               </div>
               <p class="brand-name">${brand}</p>
             </div>
@@ -72,7 +70,6 @@
       })
       .join("");
 
-    bindAssetFallbacks();
 
     brandCards.querySelectorAll(".brand-card").forEach((card) => {
       card.addEventListener("click", () => {
@@ -108,32 +105,6 @@
     }, 1400);
   }
 
-
-  function bindAssetFallbacks() {
-    document.querySelectorAll("[data-brand-media]").forEach((el) => {
-      const brand = el.getAttribute("data-brand-media");
-      const probe = new Image();
-      probe.onerror = () => {
-        const fallback = brandImageFallbacks?.[brand];
-        if (fallback) el.style.backgroundImage = `url('${fallback}')`;
-      };
-      probe.src = brandImages[brand];
-    });
-
-    document.querySelectorAll("[data-brand-logo]").forEach((img) => {
-      img.addEventListener(
-        "error",
-        () => {
-          const brand = img.getAttribute("data-brand-logo");
-          const fallback = brandLogoFallbacks?.[brand];
-          if (fallback && img.src !== new URL(fallback, window.location.href).href) {
-            img.src = fallback;
-          }
-        },
-        { once: true }
-      );
-    });
-  }
 
   function renderSidebar() {
     brandNav.innerHTML = brands
@@ -308,4 +279,4 @@
 })();
 
 // Notes architecture: rendu piloté par un state unique (brand/cat/year), URL synchronisée,
-// enrichi avec assets visuels premium, transitions douces et UX utilitaires (fade-in + retour haut).
+// enrichi avec les assets PNG/JPG fournis, transitions douces et UX utilitaires (fade-in + retour haut).

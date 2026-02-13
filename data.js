@@ -25,8 +25,25 @@
     "Mini Freestyle",
   ];
 
-
   const BRAND_LOGOS = {
+    "Mini Freestyle": "assets/logos/2._0000_logo-Mini-freestyle.png",
+    Challenger: "assets/logos/2._0001_Logo-Challenger.png",
+    Sterckeman: "assets/logos/2._0002_Logo-Sterckeman.png",
+    Rubis: "assets/logos/2._0003_Logo-Rubis.png",
+    Chausson: "assets/logos/2._0004_Logo-Chausson.png",
+    Caravelair: "assets/logos/2._0005_Logo-Caravelair.png",
+  };
+
+  const BRAND_IMAGES = {
+    Sterckeman: "assets/logos/_0004_Sterckeman.jpg",
+    Caravelair: "assets/logos/_0005_Caravelair.jpg",
+    "Mini Freestyle": "assets/logos/_0000_Mini Freestyle.jpg",
+    Rubis: "assets/logos/_0001_Rubis.jpg",
+    Chausson: "assets/logos/_0002_Chausson.jpg",
+    Challenger: "assets/logos/_0003_Challenger.jpg",
+  };
+
+  const BRAND_LOGO_FALLBACKS = {
     Chausson: "assets/logos/chausson.svg",
     Challenger: "assets/logos/challenger.svg",
     Caravelair: "assets/logos/caravelair.svg",
@@ -35,7 +52,7 @@
     "Mini Freestyle": "assets/logos/mini-freestyle.svg",
   };
 
-  const BRAND_IMAGES = {
+  const BRAND_IMAGE_FALLBACKS = {
     Chausson: "https://images.unsplash.com/photo-1501706362039-c6e80948f5d6?auto=format&fit=crop&w=1600&q=80",
     Challenger: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1600&q=80",
     Caravelair: "https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=1600&q=80",
@@ -116,10 +133,12 @@
     brands: BRANDS,
     brandImages: BRAND_IMAGES,
     brandLogos: BRAND_LOGOS,
+    brandImageFallbacks: BRAND_IMAGE_FALLBACKS,
+    brandLogoFallbacks: BRAND_LOGO_FALLBACKS,
     categoriesByBrand: CATEGORIES_BY_BRAND,
     mediaData: MEDIA_DATA,
   };
 })();
 
-// Notes architecture: données mock enrichies avec visuels premium (marques + catégories),
-// tout en gardant une structure brand -> category -> year prête pour un futur backend API.
+// Notes architecture: données mock priorisent les assets déposés localement (logos + visuels marque),
+// avec fallbacks explicites pour préserver l'affichage si certains fichiers sont absents côté environnement.

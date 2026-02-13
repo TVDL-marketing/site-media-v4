@@ -1,0 +1,359 @@
+:root {
+  --bg: #f4f5f7;
+  --panel: #ffffff;
+  --panel-muted: #f8f9fb;
+  --text: #14171a;
+  --text-soft: #596172;
+  --line: #dfe3ea;
+  --accent: #121826;
+  --accent-soft: #293142;
+  --shadow-sm: 0 10px 30px rgba(17, 22, 34, 0.05);
+  --shadow-md: 0 18px 40px rgba(17, 22, 34, 0.11);
+  --radius: 16px;
+  --radius-lg: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: radial-gradient(circle at 10% 0%, #fafbfd 0%, var(--bg) 70%);
+  color: var(--text);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+
+.sidebar {
+  padding: 1.4rem;
+  border-right: 1px solid var(--line);
+  background: linear-gradient(180deg, #f8f9fb 0%, #f1f3f7 100%);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar-header h2 {
+  margin: 0.2rem 0 1rem;
+  font-size: 1.2rem;
+}
+
+.sidebar-eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  letter-spacing: 0.08em;
+}
+
+.brand-item {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  margin-bottom: 0.7rem;
+  overflow: hidden;
+}
+
+.brand-btn,
+.cat-btn {
+  width: 100%;
+  border: none;
+  background: none;
+  text-align: left;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.92rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.brand-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.brand-item.active > .brand-btn {
+  background: var(--panel-muted);
+}
+
+.brand-categories {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 240ms ease;
+  border-top: 1px solid transparent;
+}
+
+.brand-item.active .brand-categories {
+  border-top-color: var(--line);
+  max-height: 420px;
+}
+
+.cat-btn {
+  padding-left: 1.2rem;
+  font-size: 0.86rem;
+  color: var(--text-soft);
+}
+
+.cat-btn:hover,
+.cat-btn:focus-visible,
+.brand-btn:hover,
+.brand-btn:focus-visible {
+  background: #edf1f7;
+  outline: none;
+}
+
+.cat-btn.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.main-content {
+  padding: 2rem clamp(1rem, 2vw, 2rem) 2.2rem;
+}
+
+.hero {
+  background: linear-gradient(140deg, #ffffff 0%, #f1f4f8 100%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 3.4rem 1rem;
+  text-align: center;
+}
+
+.hero-kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.76rem;
+  color: var(--text-soft);
+}
+
+.hero h1 {
+  margin: 0.75rem 0 0.65rem;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+}
+
+.hero-subtitle {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--text-soft);
+}
+
+.quick-select {
+  margin-top: 1.4rem;
+}
+
+.quick-select h2 {
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.brand-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.brand-card {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  cursor: pointer;
+  text-align: left;
+}
+
+.brand-card:hover,
+.brand-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  outline: none;
+}
+
+.brand-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid #d8dce4;
+  background: linear-gradient(170deg, #fefefe, #eef2f8);
+  display: grid;
+  place-items: center;
+  font-size: 0.8rem;
+  color: #3f4758;
+  margin-bottom: 0.7rem;
+}
+
+.brand-name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.content-panel {
+  margin-top: 1.4rem;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 1rem;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.9rem;
+}
+
+.content-header h2 {
+  margin: 0;
+}
+
+.content-subtitle {
+  margin: 0.4rem 0 0;
+  color: var(--text-soft);
+}
+
+.content-controls {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.control-field span,
+.lang-switch legend {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+
+.control-field select {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.45rem 0.65rem;
+  background: #fff;
+}
+
+.lang-switch {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.3rem 0.55rem;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.lang-switch legend {
+  padding: 0;
+  margin-right: 0.2rem;
+}
+
+.resource-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.9rem;
+}
+
+.resource-card,
+.placeholder-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.thumb {
+  height: 115px;
+  background: linear-gradient(130deg, #edf0f5, #dfe5ef);
+  border-bottom: 1px solid var(--line);
+}
+
+.resource-body {
+  padding: 0.75rem;
+}
+
+.resource-title {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+}
+
+.meta {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}
+
+.download-btn,
+.primary-btn {
+  margin-top: 0.7rem;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.download-btn:hover,
+.primary-btn:hover {
+  background: var(--accent-soft);
+}
+
+.placeholder-card {
+  padding: 1.4rem;
+}
+
+@media (max-width: 960px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+
+  .brand-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .content-header {
+    flex-direction: column;
+  }
+}
+
+/* Notes architecture: feuille de style modulaire par blocs (layout, sidebar, hero, cards, contenu),
+avec palette sobre corporate et transitions discrètes pour un rendu premium responsive. */

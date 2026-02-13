@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEDIA CENTER — Groupe Trigano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+    <div class="app-layout">
+      <aside class="sidebar" aria-label="Navigation des marques">
+        <div class="sidebar-header">
+          <p class="sidebar-eyebrow">Groupe Trigano</p>
+          <h2>Media Center</h2>
+        </div>
+        <nav id="brand-nav" class="brand-nav" aria-label="Marques et catégories"></nav>
+      </aside>
+
+      <main id="main-content" class="main-content">
+        <section class="hero" aria-labelledby="hero-title">
+          <p class="hero-kicker">Plateforme institutionnelle</p>
+          <h1 id="hero-title">MEDIA CENTER – Groupe Trigano</h1>
+          <p class="hero-subtitle">
+            Ressources officielles des marques du groupe – Photos, dossiers, catalogues et vidéos
+          </p>
+        </section>
+
+        <section class="quick-select" aria-labelledby="quick-select-title">
+          <h2 id="quick-select-title">Sélectionnez une marque</h2>
+          <div id="brand-cards" class="brand-cards" role="list"></div>
+        </section>
+
+        <section id="content-panel" class="content-panel" aria-live="polite">
+          <header class="content-header">
+            <div>
+              <h2 id="content-title">Aucune catégorie sélectionnée</h2>
+              <p id="content-subtitle" class="content-subtitle">
+                Sélectionnez une marque puis une catégorie pour afficher les ressources.
+              </p>
+            </div>
+            <div class="content-controls">
+              <label class="control-field" for="year-filter">
+                <span>Millésime</span>
+                <select id="year-filter" aria-label="Filtrer par millésime"></select>
+              </label>
+
+              <fieldset class="lang-switch" aria-label="Sélection de langue (prototype)">
+                <legend>Langue</legend>
+                <label>
+                  <input type="radio" name="lang" value="fr" checked /> FR
+                </label>
+                <label>
+                  <input type="radio" name="lang" value="en" /> EN
+                </label>
+              </fieldset>
+            </div>
+          </header>
+
+          <div id="resource-grid" class="resource-grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
+<!-- Notes architecture: structure HTML sémantique (aside/nav/main/section),
+accessibilité de base (skip-link, aria-live, labels) et conteneurs dédiés pour rendu dynamique JS. -->

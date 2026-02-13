@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" role="img" aria-label="Logo Chausson">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f2530"/>
+      <stop offset="1" stop-color="#3f6979"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="120" fill="none"/>
+  <text x="20" y="78" font-size="64" font-family="Arial Black, Arial, sans-serif" fill="url(#g)" letter-spacing="2">CHAUSSON</text>
+  <path d="M325 30 C350 5, 390 5, 395 25 C398 40, 390 54, 370 62" fill="none" stroke="#71bf44" stroke-width="8" stroke-linecap="round"/>
+</svg>

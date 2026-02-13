@@ -25,6 +25,16 @@
     "Mini Freestyle",
   ];
 
+
+  const BRAND_LOGOS = {
+    Chausson: "assets/logos/chausson.svg",
+    Challenger: "assets/logos/challenger.svg",
+    Caravelair: "assets/logos/caravelair.svg",
+    Sterckeman: "assets/logos/sterckeman.svg",
+    Rubis: "assets/logos/rubis.svg",
+    "Mini Freestyle": "assets/logos/mini-freestyle.svg",
+  };
+
   const BRAND_IMAGES = {
     Chausson: "https://images.unsplash.com/photo-1501706362039-c6e80948f5d6?auto=format&fit=crop&w=1600&q=80",
     Challenger: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1600&q=80",
@@ -105,6 +115,7 @@
     years: YEARS,
     brands: BRANDS,
     brandImages: BRAND_IMAGES,
+    brandLogos: BRAND_LOGOS,
     categoriesByBrand: CATEGORIES_BY_BRAND,
     mediaData: MEDIA_DATA,
   };

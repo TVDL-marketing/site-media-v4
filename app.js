@@ -1,5 +1,5 @@
 (function () {
-  const { brands, years, brandImages, categoriesByBrand, mediaData } = window.MediaCenterData;
+  const { brands, years, brandImages, brandLogos, categoriesByBrand, mediaData } = window.MediaCenterData;
 
   const state = {
     brand: null,
@@ -48,17 +48,14 @@
   function renderBrandCards() {
     brandCards.innerHTML = brands
       .map((brand) => {
-        const monogram = brand
-          .split(" ")
-          .map((part) => part[0])
-          .join("")
-          .slice(0, 2);
         const isActive = state.brand === brand;
         return `
           <button class="brand-card ${isActive ? "active" : ""}" role="listitem" data-brand="${brand}" aria-label="Ouvrir ${brand} dans le menu latéral">
             <div class="brand-card-media" style="background-image:url('${brandImages[brand]}')"></div>
             <div class="brand-card-content">
-              <div class="brand-logo" aria-hidden="true">${monogram}</div>
+              <div class="brand-logo-wrap" aria-hidden="true">
+                <img class="brand-logo" src="${brandLogos[brand]}" alt="" loading="lazy" />
+              </div>
               <p class="brand-name">${brand}</p>
             </div>
           </button>

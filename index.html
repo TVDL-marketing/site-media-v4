@@ -4,18 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MEDIA CENTER — Groupe Trigano</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Aller au contenu principal</a>
 
-    <div class="app-layout">
+    <div class="app-layout fade-in-root">
       <aside class="sidebar" aria-label="Navigation des marques">
         <div class="sidebar-header">
           <p class="sidebar-eyebrow">Groupe Trigano</p>
@@ -26,11 +20,15 @@
 
       <main id="main-content" class="main-content">
         <section class="hero" aria-labelledby="hero-title">
-          <p class="hero-kicker">Plateforme institutionnelle</p>
-          <h1 id="hero-title">MEDIA CENTER – Groupe Trigano</h1>
-          <p class="hero-subtitle">
-            Ressources officielles des marques du groupe – Photos, dossiers, catalogues et vidéos
-          </p>
+          <div class="hero-overlay">
+            <h1 id="hero-title">
+              <span>MEDIA CENTER</span>
+              <span>GROUPE TRIGANO</span>
+            </h1>
+            <p class="hero-subtitle">
+              Ressources officielles des marques du groupe – Photos, dossiers, catalogues et vidéos.
+            </p>
+          </div>
         </section>
 
         <section class="quick-select" aria-labelledby="quick-select-title">
@@ -69,9 +67,11 @@
       </main>
     </div>
 
+    <button id="back-to-top" class="back-to-top" aria-label="Retour en haut">↑</button>
+
     <script src="data.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
-<!-- Notes architecture: structure HTML sémantique (aside/nav/main/section),
-accessibilité de base (skip-link, aria-live, labels) et conteneurs dédiés pour rendu dynamique JS. -->
+<!-- Notes architecture: structure sémantique + conteneurs dynamiques, hero premium image-first,
+avec bouton retour haut dédié et base accessibilité clavier/screen readers. -->

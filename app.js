@@ -1,5 +1,5 @@
 (function () {
-  const { brands, years, categoriesByBrand, mediaData } = window.MediaCenterData;
+  const { brands, years, brandImages, categoriesByBrand, mediaData } = window.MediaCenterData;
 
   const state = {
     brand: null,
@@ -13,6 +13,8 @@
   const contentSubtitle = document.getElementById("content-subtitle");
   const resourceGrid = document.getElementById("resource-grid");
   const yearFilter = document.getElementById("year-filter");
+  const backToTopBtn = document.getElementById("back-to-top");
+  const fadeRoot = document.querySelector(".fade-in-root");
 
   function slugLabel(brand, catSlug) {
     return categoriesByBrand[brand]?.find((cat) => cat.slug === catSlug)?.label ?? catSlug;
@@ -51,10 +53,14 @@
           .map((part) => part[0])
           .join("")
           .slice(0, 2);
+        const isActive = state.brand === brand;
         return `
-          <button class="brand-card" role="listitem" data-brand="${brand}" aria-label="Ouvrir ${brand} dans le menu latéral">
-            <div class="brand-logo" aria-hidden="true">${monogram}</div>
-            <p class="brand-name">${brand}</p>
+          <button class="brand-card ${isActive ? "active" : ""}" role="listitem" data-brand="${brand}" aria-label="Ouvrir ${brand} dans le menu latéral">
+            <div class="brand-card-media" style="background-image:url('${brandImages[brand]}')"></div>
+            <div class="brand-card-content">
+              <div class="brand-logo" aria-hidden="true">${monogram}</div>
+              <p class="brand-name">${brand}</p>
+            </div>
           </button>
         `;
       })
@@ -64,6 +70,7 @@
       card.addEventListener("click", () => {
         state.brand = card.dataset.brand;
         state.cat = null;
+        renderBrandCards();
         renderSidebar();
         renderContent();
         pushUrl();
@@ -106,11 +113,7 @@
               <span>${brand}</span>
               <span aria-hidden="true">${isActive ? "−" : "+"}</span>
             </button>
-            <ul
-              id="cats-${brand.replace(/\s+/g, "-").toLowerCase()}"
-              class="brand-categories"
-              role="list"
-            >
+            <ul id="cats-${brand.replace(/\s+/g, "-").toLowerCase()}" class="brand-categories" role="list">
               ${categoriesMarkup}
             </ul>
           </section>
@@ -122,6 +125,7 @@
       btn.addEventListener("click", () => {
         state.brand = btn.dataset.brand;
         state.cat = null;
+        renderBrandCards();
         renderSidebar();
         renderContent();
         pushUrl();
@@ -132,6 +136,7 @@
       btn.addEventListener("click", () => {
         state.brand = btn.dataset.brand;
         state.cat = btn.dataset.cat;
+        renderBrandCards();
         renderSidebar();
         renderContent();
         pushUrl();
@@ -144,7 +149,7 @@
       .map(
         (r) => `
       <article class="resource-card">
-        <div class="thumb" role="img" aria-label="Miniature ${r.thumb}"></div>
+        <div class="thumb" role="img" aria-label="Miniature ${r.title}" style="background-image:url('${r.thumbUrl}')"></div>
         <div class="resource-body">
           <h3 class="resource-title">${r.title}</h3>
           <p class="meta">${r.type} · ${r.size}</p>
@@ -167,9 +172,7 @@
     resourceGrid.innerHTML = `
       <article class="placeholder-card">
         <h3>Générateur de fiches produit/prix</h3>
-        <p>
-          ${catData.description}
-        </p>
+        <p>${catData.description}</p>
         <button class="primary-btn" id="generate-sheet-btn">Générer une fiche</button>
       </article>
     `;
@@ -200,21 +203,32 @@
       return;
     }
 
-    const resources = catData.years[state.year] ?? [];
-    renderResources(resources);
+    renderResources(catData.years[state.year] ?? []);
   }
 
   function bindEvents() {
-    yearFilter.addEventListener("change", (e) => {
-      state.year = e.target.value;
+    yearFilter.addEventListener("change", (event) => {
+      state.year = event.target.value;
       renderContent();
       pushUrl();
     });
 
+    window.addEventListener("scroll", () => {
+      backToTopBtn.classList.toggle("visible", window.scrollY > 380);
+    });
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
     window.addEventListener("popstate", (event) => {
-      if (event.state) Object.assign(state, event.state);
-      else parseQuery();
+      if (event.state) {
+        Object.assign(state, event.state);
+      } else {
+        parseQuery();
+      }
       renderYearOptions();
+      renderBrandCards();
       renderSidebar();
       renderContent();
     });
@@ -228,10 +242,14 @@
     renderContent();
     bindEvents();
     if (!window.location.search) pushUrl();
+
+    requestAnimationFrame(() => {
+      fadeRoot?.classList.add("ready");
+    });
   }
 
   init();
 })();
 
-// Notes architecture: état unique (brand/cat/year), rendu déclaratif par zones (sidebar/cartes/contenu),
-// synchronisation URL via pushState + lecture initiale pour simuler un comportement applicatif sans backend.
+// Notes architecture: rendu piloté par un state unique (brand/cat/year), URL synchronisée,
+// enrichi avec assets visuels premium, transitions douces et UX utilitaires (fade-in + retour haut).

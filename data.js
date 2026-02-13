@@ -25,25 +25,22 @@
     "Mini Freestyle",
   ];
 
-  const RAW_BASE =
-    "https://raw.githubusercontent.com/TVDI-marketing/site-media-v4/main";
-
   const BRAND_LOGOS = {
-    "Mini Freestyle": `${RAW_BASE}/2._0000_logo-Mini-freestyle.png`,
-    Challenger: `${RAW_BASE}/2._0001_Logo-Challenger.png`,
-    Sterckeman: `${RAW_BASE}/2._0002_Logo-Sterckeman.png`,
-    Rubis: `${RAW_BASE}/2._0003_Logo-Rubis.png`,
-    Chausson: `${RAW_BASE}/2._0004_Logo-Chausson.png`,
-    Caravelair: `${RAW_BASE}/2._0005_Logo-Caravelair.png`,
+    "Mini Freestyle": "2._0000_logo-Mini-freestyle.png",
+    Challenger: "2._0001_Logo-Challenger.png",
+    Sterckeman: "2._0002_Logo-Sterckeman.png",
+    Rubis: "2._0003_Logo-Rubis.png",
+    Chausson: "2._0004_Logo-Chausson.png",
+    Caravelair: "2._0005_Logo-Caravelair.png",
   };
 
   const BRAND_IMAGES = {
-    Caravelair: `${RAW_BASE}/Caravelair.jpg`,
-    Challenger: `${RAW_BASE}/Challenger.jpg`,
-    Chausson: `${RAW_BASE}/Chausson.jpg`,
-    "Mini Freestyle": `${RAW_BASE}/Mini%20Freestyle.jpg`,
-    Rubis: `${RAW_BASE}/Rubis.jpg`,
-    Sterckeman: `${RAW_BASE}/Sterckeman.jpg`,
+    Caravelair: "Caravelair.jpg",
+    Challenger: "Challenger.jpg",
+    Chausson: "Chausson.jpg",
+    "Mini Freestyle": "Mini Freestyle.jpg",
+    Rubis: "Rubis.jpg",
+    Sterckeman: "Sterckeman.jpg",
   };
 
   const CATEGORY_IMAGES = {
@@ -123,5 +120,5 @@
   };
 })();
 
-// Notes architecture: mapping des logos/images marque vers les assets réels du repo GitHub (branche main),
-// afin d'éviter les 404 locaux et fiabiliser l'affichage du prototype sans fallback artificiel.
+// Notes architecture: mapping des logos/images marque en chemins relatifs à la racine du repo,
+// ce qui fonctionne directement sur ton dépôt (GitHub Pages/dev server) sans dépendre d'URLs externes.
